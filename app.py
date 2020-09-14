@@ -1,1 +1,2 @@
-print("Hello World!") 
+from skdecide import utils
+print("Skdecide is installed!")
