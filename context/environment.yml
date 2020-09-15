@@ -1,0 +1,18 @@
+name: skdecide2
+dependencies:
+  - python=3.7
+  - pip
+  - flask
+  - pip:
+    - simplejson>=3.16.0
+    - pynng>=0.5.0
+    - pathos>=0.2.3
+    - tensorflow>=1.8.0,<2.1.0
+    - ray[debug,rllib]>=0.8.6
+    - cycler>=0.10
+    - kiwisolver>=1.2.0
+    - pyparsing>=2.4.7
+    - matplotlib>=3.3.1
+    - joblib>=0.16.0
+    - stable-baselines>=2.10.1
+    - cloudpickle<1.4.0,>=1.2.0
