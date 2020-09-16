@@ -8,6 +8,11 @@
 ############################
 FROM ubuntu:16.04
 MAINTAINER Domingo Diez <domingo.diez@airbus.com>
+
+#[V6]
+FROM python:3.7
+
+
 #[V6] Commented
 #USER root
 
@@ -147,21 +152,24 @@ SHELL ["/bin/bash", "--login", "-c"]
 #ENV PATH=$CONDA_DIR/envs/skdecide2/bin:$PATH
 
 #[V6]
-RUN wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz && \
-	tar -xvf Python-3.7.9.tgz && \
-	cd Python-3.7.9 && \
-	./configure && \
-	make && \
-	make install
+#RUN wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz && \
+#	tar -xvf Python-3.7.9.tgz && \
+#	cd Python-3.7.9 && \
+#	./configure && \
+#	make && \
+#	make install
 
 
 #ENTRYPOINT ["pip", "install", ".[all]"]
 #RUN pip install . 
 #RUN git submodule update --init --recursive #Hey, look at me
-RUN python3.7 -m pip install --upgrade pip setuptools wheel 
 #[V6]
-COPY pip_reqs.txt /tmp/pip_reqs.txt
-RUN python3.7 -m pip install -r /tmp/pip_reqs.txt
+#RUN python3.7 -m pip install --upgrade pip setuptools wheel 
+#[V6]
+COPY pip_reqs.txt /tmp
+WORKDIR /tmp
+RUN python3.7 -m pip install --upgrade pip && \
+	python3.7 -m pip install -r pip_reqs.txt
 
 #RUN pip cache purge
 
