@@ -1,3 +1,9 @@
+############################
+#Version: V5
+#Table of records:
+# - V5:
+#	Commented command add-apt-repository as openshift crashes while getting keyserver.ubuntu.com as gpg requires 
+############################
 FROM ubuntu:16.04
 MAINTAINER Domingo Diez <domingo.diez@airbus.com>
 
@@ -29,11 +35,11 @@ RUN apt-get update \
 	&& apt-get install build-essential -y \
 	&& apt install software-properties-common -y 
 
-
-RUN add-apt-repository ppa:ubuntu-toolchain-r/test \
-	&& apt-get update \
-	&& apt-get install gcc-snapshot -y \
-	&& apt-get install gcc-7 g++-7 -y
+#[V5] Problems in openshift. It would be required to compile C++ code of SciKit-decide
+#RUN add-apt-repository ppa:ubuntu-toolchain-r/test \
+#	&& apt-get update \
+#	&& apt-get install gcc-snapshot -y \
+#	&& apt-get install gcc-7 g++-7 -y
 
 #RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7.5 10
 #RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7.5 10
