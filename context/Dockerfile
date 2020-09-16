@@ -147,12 +147,19 @@ SHELL ["/bin/bash", "--login", "-c"]
 #ENV PATH=$CONDA_DIR/envs/skdecide2/bin:$PATH
 
 #[V6]
-RUN apt-get install python3.7 -y
+RUN wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz && \
+	tar -xvf Python-3.7.9.tgz && \
+	cd Python-3.7.9 && \
+	./configure && \
+	make && \
+	make install
+
 
 #ENTRYPOINT ["pip", "install", ".[all]"]
 #RUN pip install . 
 #RUN git submodule update --init --recursive #Hey, look at me
 RUN python3.7 -m pip install --upgrade pip setuptools wheel 
+#[V6]
 COPY pip_reqs.txt /tmp/pip_reqs.txt
 RUN python3.7 -m pip install -r /tmp/pip_reqs.txt
 
