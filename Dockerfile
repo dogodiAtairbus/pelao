@@ -166,10 +166,10 @@ SHELL ["/bin/bash", "--login", "-c"]
 #[V6]
 #RUN python3.7 -m pip install --upgrade pip setuptools wheel 
 #[V6]
-COPY pip_reqs.txt /tmp
+COPY requirements.txt /tmp
 WORKDIR /tmp
 RUN python3.7 -m pip install --upgrade pip && \
-	python3.7 -m pip install -r pip_reqs.txt
+	python3.7 -m pip install -r requirements.txt
 
 #RUN pip cache purge
 
